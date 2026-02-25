@@ -1,0 +1,36 @@
+name: File Store CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - feature/marco-fullstack
+      - feature/jackline-frontend-css
+      - feature/levelianus-frontend
+jobs:
+  build-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Go to Backend Folder
+      run: cd backend
+
+    - name: Install Dependencies
+      run: |
+        cd backend
+        npm install
+
+    - name: Run Server Test
+      run: |
+        cd backend
+        node server.js
