@@ -1,31 +1,54 @@
-name: DevOps Build
+name: File Store CI/CD
 
 on:
- push:
-  branches:
-   - main
-   - marco-backend
-   - levelianus-frontend-html
-   - jackline-frontend-css
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
- build:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-  runs-on: ubuntu-latest
+      - name: Install Dependencies
+        run: npm install
 
-  steps:
+      - name: Run Lint
+        run: npm run lint
 
-  - name: Checkout Code
-    uses: actions/checkout@v4
+      - name: Run Tests
+        run: npm run test
 
-  - name: Install Node
-    uses: actions/setup-node@v4
-    with:
-     node-version: 20
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-  - name: Install Packages
-    run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-  - name: Start Server Test
-    run: node backend/server.js &
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy to Server
+        env:
+          HOST: ${{ secrets.SERVER_HOST }}
+          USER: ${{ secrets.SERVER_USER }}
+          PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+        run: |
+          sshpass -p $PASSWORD ssh $USER@$HOST 'cd /var/www/file-store-backup && git pull && npm install && pm2 restart all'
