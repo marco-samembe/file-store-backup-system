@@ -83,7 +83,82 @@ loginBtn.onclick = async () => {
     loginMsg.textContent = "Server error";
   }
 };
+   // ===== FORGOT PASSWORD =====
+const forgotLink = document.getElementById("forgotPasswordLink");
+const forgotSection = document.getElementById("forgotSection");
+const resetMsg = document.getElementById("resetMsg");
 
+forgotLink.onclick = () => {
+  forgotSection.style.display = "block";
+};
+
+function closeForgot(){
+  forgotSection.style.display = "none";
+  document.getElementById("resetEmail").value = "";
+  document.getElementById("verificationCode").value = "";
+  document.getElementById("newResetPassword").value = "";
+  document.getElementById("codeSection").style.display = "none";
+  resetMsg.textContent = "";
+}
+
+// ===== SEND CODE =====
+document.getElementById("sendCodeBtn").onclick = async () => {
+  const email = document.getElementById("resetEmail").value.trim();
+  if(!email){
+    resetMsg.textContent = "Enter your email";
+    return;
+  }
+
+  try{
+    const res = await fetch(`${API}/forgot-password`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email})
+    });
+
+    const data = await res.json();
+    resetMsg.style.color = data.success ? "green":"red";
+    resetMsg.textContent = data.message;
+
+    if(data.success){
+      document.getElementById("codeSection").style.display = "block";
+    }
+
+  }catch{
+    resetMsg.textContent = "Server error";
+  }
+};
+
+// ===== VERIFY CODE =====
+document.getElementById("verifyCodeBtn").onclick = async () => {
+  const email = document.getElementById("resetEmail").value.trim();
+  const code = document.getElementById("verificationCode").value.trim();
+  const newPassword = document.getElementById("newResetPassword").value.trim();
+
+  if(!code || !newPassword){
+    resetMsg.textContent = "Enter code and new password";
+    return;
+  }
+
+  try{
+    const res = await fetch(`${API}/reset-password`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email,code,newPassword})
+    });
+
+    const data = await res.json();
+    resetMsg.style.color = data.success ? "green":"red";
+    resetMsg.textContent = data.message;
+
+    if(data.success){
+      closeForgot();
+    }
+
+  }catch{
+    resetMsg.textContent = "Server error";
+  }
+};
 // ===== LOGOUT =====
 logoutBtn.onclick = () => {
   loggedInUser = null;
