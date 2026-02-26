@@ -83,7 +83,39 @@ loginBtn.onclick = async () => {
     loginMsg.textContent = "Server error";
   }
 };
+   // ===== SIMPLE FORGOT PASSWORD =====
+document.getElementById("forgotLink").onclick = async () => {
 
+  const username = document.getElementById("username").value.trim();
+
+  if(!username){
+    alert("Enter your username first");
+    return;
+  }
+
+  const newPassword = prompt("Enter new password:");
+  if(!newPassword) return;
+
+  const confirmPassword = prompt("Confirm new password:");
+  if(newPassword !== confirmPassword){
+    alert("Passwords do not match");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API}/forgot-password`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({username,newPassword})
+    });
+
+    const data = await res.json();
+    alert(data.message);
+
+  } catch {
+    alert("Reset failed");
+  }
+};
 // ===== LOGOUT =====
 logoutBtn.onclick = () => {
   loggedInUser = null;
