@@ -1,164 +1,80 @@
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 /* ===== BODY ===== */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   padding: 25px;
-  background: linear-gradient(135deg, #bb15e085, #06b6d4);
+
+  /* NEW ATTRACTIVE COLORS */
+  background: linear-gradient(135deg, #464146, #a4d6b9, #4cabd6);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+
   color: #333;
 }
 
-/* ===== SECTION (CARD STYLE) ===== */
+/* Animated background */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== SECTION ===== */
 section {
-  background: rgba(255, 255, 255, 255);
-  padding: 20px;
+  background: rgba(160, 133, 133, 0.95);
+  padding: 24px;
   margin-bottom: 20px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
 }
 
 /* ===== TITLES ===== */
 h1, h2, h3 {
-  margin-bottom: 15px;
-  color: #4a00e0;
-}
+  margin-bottom: 18px;
 
-/*===== LOGIN SECTION ===== */
-#loginSection {
-  max-width: 360px;
-  margin: 70px auto;
-  padding: 22px 20px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  animation: slideUp 0.6s ease;
-}
+  /* NEW TITLE COLOR */
+  background: linear-gradient(135deg, hsl(132, 24%, 96%), #eceeec);
 
-/* Login animation */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Login title */
-#loginSection h3 {
-  text-align: center;
-  font-size: 1px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ===== INPUTS ===== */
-input,
-select {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 15px;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
+/* ===== LOGIN SECTION ===== */
+#loginSection {
+  max-width: 380px;
+  margin: 70px auto;
+  padding: 28px 24px;
+  border-radius: 24px;
+  background: rgba(192, 158, 158, 0.97);
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: #8e2de2;
-  box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.15);
+  /* NEW SHADOW COLOR */
+  box-shadow: 0 30px 60px rgba(50, 80, 200, 0.4);
 }
 
 /* ===== BUTTONS ===== */
 button {
-  padding: 12px 16px;
-  border-radius: 14px;
+  padding: 8px 12px;
+  border-radius: 8px;
   border: none;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
+
+  /* NEW BUTTON COLOR */
+  background: linear-gradient(135deg, #6e5c81, #12151b);
+
+  color: green;
+
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
+  transform: translateY(-3px) scale(1.05);
 
-/* ===== LOGIN SECTION (MINIMIZED & CENTERED) ====== */
-#loginSection {
-  max-width: 360px;
-  margin: 70px auto;
-  padding: 22px 20px;
-  border-radius: 20px;
-  animation: slideUp 0.5s ease;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#loginSection input {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 15px;
-}
-
-#loginSection input:focus {
-  outline: none;
-  border-color: #8e2de2;
-  box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.15);
-}
-
-#loginSection button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 14px;
-  border: none;
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-#loginSection button:hover {
-  transform: scale(1.04);
-}
-
-/* ===== FILE LIST ===== */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  /* NEW HOVER COLOR */
+  box-shadow: 0 10px 25px rgba(68, 76, 73, 0.5);
 }
 
 /* ===== FILE ITEM ===== */
@@ -166,57 +82,39 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #ffffff, #f3f3fb);
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* NEW FILE COLOR */
+  background: linear-gradient(135deg, #c0bbbb, #e8f0ff);
+
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 12px rgba(80, 100, 255, 0.15);
+
+  transition: 0.3s ease;
 }
 
 .file-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+
+  box-shadow: 0 20px 40px rgba(80, 100, 255, 0.35);
 }
 
-/* ===== FILE NAME ===== */
-.file-name {
-  font-size: 15px;
-  font-weight: 500;
-  color: #444;
-  max-width: 70%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-/* ===== 3 DOTS MENU ===== */
-.menu-wrapper {
-  position: relative;
-}
-
+/* ===== MENU BUTTON (ORIGINAL) ===== */
 .menu-btn {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-  border: none;
-  cursor: pointer;
-  padding: 6px 10px;
+  background: linear-gradient(135deg, #6e5c81, #12151b);
   border-radius: 10px;
-  transition: transform 0.2s ease, background 0.2s ease;
+  padding: 6px 10px;
 }
 
-/* Force 3 dots */
 .menu-btn::after {
   content: "⋮";
   font-size: 22px;
   color: #fff;
 }
 
-.menu-btn:hover {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, #9d3cff, #5a1dff);
-}
-
-/* ===== DROPDOWN MENU ===== */
+/* ===== DROPDOWN MENU (ORIGINAL) ===== */
 .menu {
   display: none;
   position: absolute;
@@ -232,20 +130,14 @@ ul {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .menu button,
 .menu a {
   display: block;
-  width: 10%;
+  width: 100%;
   padding: 12px 14px;
   border: none;
   background: white;
@@ -260,54 +152,22 @@ ul {
   background: #f0ebff;
 }
 
-/* ===== SETTINGS PANEL ===== */
-#settingsPanel {
-  display: none;
-  background: #f7f5ff;
-  padding: 10px;
-  border-radius: 09px;
-  margin-top: 10px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== MOBILE RESPONSIVE ===== */
-@media (max-width: 480px) {
-  body {
-    padding: 15px;
-  }
-
-  #loginSection {
-    margin-top: 40px;
-    padding: 20px;
-  }
-}
-/* ===== SEARCH + SORT CONTAINER ===== */
-.search-sort-bar {
+/* ===== UPLOAD BOX ===== */
+.upload-box {
   display: flex;
-  flex-direction: column; /* 🔥 THIS is the key */
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-direction: column; /* Input juu, Upload chini */
+  gap: 12px;
+  max-width: 320px;
 }
 
-/* SEARCH INPUT */
-#searchInput {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 15px;
+/* File browser input */
+input[type="file"] {
+  display: block;
+  margin-bottom: 10px;
 }
 
-/* SORT ROW (BELOW SEARCH) */
-.sort-row {
-  display: flex;
-  gap: 10px;
-}
-
-/* SORT BUTTONS */
-.sort-row button {
-  flex: 1;
-  padding: 10px;
-  border-radius: 12px;
-  font-size: 14px;
+/* Upload button iwe chini ya browser input */
+.upload-box button {
+  display: block;
+  margin-top: 5px;
 }
