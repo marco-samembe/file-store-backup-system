@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      - feature/marco-fullstack
-      - feature/jackline-frontend-css
-      - feature/levelianus-frontend
+
 jobs:
-  build-test:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -17,20 +15,18 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    - name: Setup Node.js
+    - name: Setup NodeJS
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
-    - name: Go to Backend Folder
-      run: cd backend
-
-    - name: Install Dependencies
+    - name: Install Backend Dependencies
       run: |
         cd backend
         npm install
 
-    - name: Run Server Test
+    - name: Test Server
       run: |
         cd backend
-        node server.js
+        node server.js &
+        sleep 5
