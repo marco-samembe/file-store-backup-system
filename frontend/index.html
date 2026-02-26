@@ -19,13 +19,29 @@
   <button type="button" onclick="togglePassword('password')">👁</button><br><br>
   <button id="loginBtn">Login</button>
   <p id="loginMsg" style="color:red;"></p>
-<input type="password" id="password" placeholder="Password">
-<button type="button" onclick="togglePassword('password')">👁</button><br>
 
-<a href="#" id="forgotLink" style="font-size:13px; color:blue; cursor:pointer;">
-  Forgot Password?
-</a><br><br>
-  <hr>
+
+<p style="text-align:center;">
+  <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+</p>
+
+<!-- ===== FORGOT PASSWORD SECTION ===== -->
+<div id="forgotSection" style="display:none; border:1px solid #ccc; padding:15px; margin-top:10px;">
+  <h3>Reset Password</h3>
+
+  <input type="email" id="resetEmail" placeholder="Enter your email"><br><br>
+  <button id="sendCodeBtn">Send Confirmation Code</button>
+  <p id="resetMsg" style="color:red;"></p>
+
+  <div id="codeSection" style="display:none;">
+    <input type="text" id="verificationCode" placeholder="Enter Confirmation Code"><br><br>
+    <input type="password" id="newResetPassword" placeholder="Enter New Password"><br><br>
+    <button id="verifyCodeBtn">Reset Password</button>
+  </div>
+
+  <br>
+  <button onclick="closeForgot()">Cancel</button>
+</div>
 
   <h3>Sign Up</h3>
   <input type="text" id="signupUsername" placeholder="Enter Email or New Username"><br>
